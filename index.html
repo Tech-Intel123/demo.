@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>demo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+/* HEADER */
+header{
+    background: linear-gradient(135deg, #000, #4b0082);
+    color:white;
+    padding:15px 30px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:relative;
+}
+
+/* LOGO */
+.logo img{
+    width:60px;
+    border-radius: 10px;
+}
+
+/* TITLE */
+.title{
+    position:absolute;
+    left:20%;
+    transform:translateX(-50%);
+    text-align:center;      
+}
+
+.title h1{
+    font-size:24px;
+    color:#FFD700;
+}
+
+.title h2{
+    font-size:14px;
+    color:#ccc;
+}
+
+/* NAV LINKS */
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-size:16px;
+    position:relative;
+    transition:0.3s;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+     background:#FFD700;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* HAMBURGER */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.hamburger span{
+    width:25px;
+    height:3px;
+    background:white;
+    margin:4px;
+    transition:0.4s;
+}
+/* HERO SECTION */
+.hero{
+    margin-top:0px; /* gap from header */
+    height:calc(100vh - 80px); /* adjust based on header height */
+     background: linear-gradient(135deg, #000, #2c003e);
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    padding:20px;
+}
+
+/* HEADING */
+.hero h1{
+    font-size:48px;
+   color:#FFD700;
+    margin-bottom:10px;
+}
+
+.hero h2{
+    font-size:20px;
+    color:#ccc;
+    margin-bottom:25px;
+}
+.hero-sub{
+    font-size:16px;
+    color:#FFD700;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+/* BUTTONS */
+.btn button{
+    padding:12px 25px;
+    margin:10px;
+    border:none;
+    border-radius:5px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+/* FIRST BUTTON */
+.btn button:first-child{
+    background:transparent;
+   border:2px solid #FFD700;
+    color:#FFD700;
+}
+
+.btn button:first-child:hover{
+   background:#FFD700;
+    color:black;
+}
+
+/* SECOND BUTTON */
+.btn button:last-child{
+    background:#6a0dad;
+    color:white;
+}
+
+.btn button:last-child:hover{
+   background:#FFD700;
+    color:black;
+}
+/* REVIEW SECTION */
+.reviews {
+    background: #000;
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.reviews h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  color:#FFD700;
+    letter-spacing: 1px;
+}
+
+/* CONTAINER */
+.review-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.review-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    padding: 25px;
+    width: 300px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* HOVER EFFECT */
+.review-card:hover {
+    transform: translateY(-10px);
+    border-color:#FFD700;
+    box-shadow:0 0 15px #FFD700;
+}
+
+/* TEXT */
+.review-card p {
+    font-size: 1rem;
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.review-card h3 {
+    font-size: 1.1rem;
+    color: limegreen;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .reviews h2 {
+        font-size: 2rem;
+    }
+
+    .review-card {
+        width: 90%;
+    }
+}
+
+/* EXTRA SMALL */
+@media (max-width: 480px) {
+    .reviews {
+        padding: 40px 10px;
+    }
+
+    .review-card {
+        padding: 20px;
+    }
+}
+/* MOBILE MENU */
+@media(max-width:768px){
+
+    nav{
+        position:absolute;
+        top:80px;
+        right:0;
+        background:#111;
+        flex-direction:column;
+        width:200px;
+        height:0;
+        overflow:hidden;
+        transition:0.5s;
+        border-left:2px solid #033114;
+    }
+     .title{
+        display: none;
+    }
+
+    nav.active{
+        height:220px;
+        padding:20px;
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    /* ANIMATION */
+    .hamburger.active span:nth-child(1){
+        transform:rotate(45deg) translate(5px,5px);
+    }
+
+    .hamburger.active span:nth-child(2){
+        opacity:0;
+    }
+
+    .hamburger.active span:nth-child(3){
+        transform:rotate(-45deg) translate(6px,-6px);
+    }
+     .hero{
+        height:auto;
+        padding:60px 20px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero h2{
+        font-size:16px;
+    }
+
+    .btn button{
+        width:100%;
+        max-width:250px;
+    }
+
+  
+}
+.portfolio {
+    background: #111;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.portfolio h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+   color:#FFD700;
+}
+
+/* Container */
+.portfolio-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Card */
+.portfolio-card {
+    background: #1c1c1c;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 300px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Hover Effect */
+.portfolio-card:hover {
+    transform: translateY(-10px);
+   box-shadow:0 0 15px #FFD700;
+}
+
+/* Image Fix */
+.portfolio-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;   /* ✅ full image visible */
+    background: #000;      /* empty space fill */
+    padding: 10px;
+}
+
+/* Button */
+.portfolio-card a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    background:#6a0dad;
+    color:white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.portfolio-card a:hover {
+    background:#FFD700;
+    color:black;
+}
+
+/* 📱 Tablet */
+@media (max-width: 768px) {
+    .portfolio h1 {
+        font-size: 2rem;
+    }
+
+    .portfolio-card {
+        width: 90%;
+    }
+}
+
+/* 📱 Mobile */
+@media (max-width: 480px) {
+    .portfolio {
+        padding: 40px 10px;
+    }
+
+    .portfolio h1 {
+        font-size: 1.8rem;
+    }
+}
+.pricing {
+    background: #000;
+    color:#FFD700;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.pricing h1 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color:#FFD700;
+}
+
+/* Container */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Card */
+.pricing-card {
+    background: #1c1c1c;
+    padding: 30px;
+    width: 280px;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.pricing-card h3 {
+    font-size: 2rem;
+    margin: 10px 0 20px;
+    color: white;
+}
+/* Premium Highlight */
+.pricing-card.premium {
+    border: 2px solid limegreen;
+}
+
+/* Hover */
+.pricing-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px limegreen;
+}
+
+.pricing-card h2 {
+    margin-bottom: 20px;
+    color:#FFD700;
+}
+
+/* List */
+.pricing-card ul {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.pricing-card ul li {
+    margin: 10px 0;
+}
+
+/* Button */
+.pricing-card button {
+    padding: 10px 20px;
+    border: none;
+    background:#6a0dad;
+    color:white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.pricing-card button:hover {
+     background:#FFD700;
+    color:black;
+}
+/* PRICING CARD BASE */
+.pricing-card{
+    position: relative;
+    background: #1c1c1c;
+    padding: 30px;
+    width: 280px;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* ROTATING BORDER */
+.pricing-card::before{
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+        transparent,
+        limegreen,
+        transparent,
+        limegreen
+    );
+    animation: rotateBorder 4s linear infinite;
+    z-index: 0;
+}
+
+/* INNER BOX (CONTENT SAFE) */
+.pricing-card::after{
+    content: "";
+    position: absolute;
+    inset: 3px;
+    background: #1c1c1c;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* KEEP TEXT ABOVE */
+.pricing-card *{
+    position: relative;
+    z-index: 2;
+}
+
+/* ANIMATION */
+@keyframes rotateBorder{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .pricing-card {
+        width: 90%;
+    }
+}
+.footer {
+    background: linear-gradient(135deg, #000, #1a1a1a, #222);
+    color: white;
+    padding: 50px 20px 20px;
+}
+
+/* Container */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+/* Box */
+.footer-box {
+    flex: 1;
+    min-width: 220px;
+}
+
+/* Headings */
+.footer-box h2 {
+    color: limegreen;
+    margin-bottom: 10px;
+}
+
+.footer-box h3 {
+    color: limegreen;
+    margin-bottom: 15px;
+}
+
+/* Text */
+.footer-box p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+/* Links */
+.footer-box ul {
+    list-style: none;
+}
+
+.footer-box ul li {
+    margin: 8px 0;
+}
+
+.footer-box ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+    color: limegreen;
+}
+
+/* Social */
+.social-icons a {
+    display: block;
+    color: #ccc;
+    margin: 5px 0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: limegreen;
+    transform: translateX(5px);
+}
+
+/* Bottom */
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 30px;
+    padding-top: 15px;
+    color: #aaa;
+}
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin: 5px 10px;
+    }
+}
+</style>
+
+</head>
+<body>
+
+<header>
+
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="logo.jpg" alt="logo">
+    </div>
+
+    <!-- TITLE -->
+    <div class="title">
+        <h1> Events</h1>
+        <h2></h2>
+       <h3 class="hero-sub">Gives You Memorable Events</h3>
+    </div>
+
+    <!-- NAV -->
+    <nav id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#pricing">Packages</a>
+    </nav>
+
+    <!-- HAMBURGER -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+    <section class="hero" id="home">
+       <h1>Royal Affection Events</h1>
+       <h2>Provides Memorable Moments</h2>
+
+       <div class="btn">
+   <a href="#reviews">
+      <button>know more</button>
+   </a>
+
+   <a href="#pricing">
+      <button>build now!</button>
+   </a>
+</div>
+    </section>
+
+    <section class="reviews" id="reviews">
+    <h2>Client Reviews</h2>
+
+    <div class="review-container">
+
+        <div class="review-card">
+            <p>"Amazing work! My website looks super professional."</p>
+            <h3>- Rahul Sharma</h3>
+        </div>
+
+        <div class="review-card">
+            <p>"Fast delivery and clean design. Highly recommended!"</p>
+            <h3>- Priya Verma</h3>
+        </div>
+
+        <div class="review-card">
+            <p>"Best developer I've worked with. Smooth experience."</p>
+            <h3>- Aman Gupta</h3>
+        </div>
+
+    </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+    <h1>our Portfolio</h1>
+
+    <div class="portfolio-container">
+
+        <!-- Project 1 -->
+        <div class="portfolio-card">
+            <img src="img1.jpg" alt="Project 1">
+            <a href="#home"_blank">View Project</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="portfolio-card">
+            <img src="img2.jpg" alt="Project 2">
+            <a href="#home " target="_blank">View Project</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="portfolio-card">
+            <img src="img3.jpg" alt="Project 3">
+            <a href="#home" target="_blank">View Project</a>
+        </div>
+
+    </div>
+</section>
+
+<section class="pricing" id="pricing">
+    <h1>Our Pricing</h1>
+
+    <div class="pricing-container">
+
+        <!-- Standard Package -->
+        <div class="pricing-card">
+            <h2>Standard</h2>
+            <h3>₹XXXX</h3>
+            <ul>
+                <li>✔ Event planning strategy</li>
+                <li>✔ Dj night</li>
+                <li>✔ cattering</li>
+                <li>✔ Family games</li>
+                <li>✔ Beautiful decoration</li>
+            </ul>
+            <a href="https://wa.me/918800512160?text=I%20want%20Standard%20Package" target="_blank">
+                <button>Choose Plan</button>
+            </a>
+        </div>
+
+        <!-- Premium Package -->
+        <div class="pricing-card premium">
+            <h2>Premium</h2>
+            <h3>₹XXXX</h3>
+            <ul>
+                <li>✔ Event planning strategy</li>
+                <li>✔ Dj night</li>
+                <li>✔ cattering</li>
+                <li>✔ Family games</li>
+                <li>✔ Beautiful decoration</li>
+                <li>✔ venue</li>
+            </ul>
+            <a href="https://wa.me/?text=I%20want%20Premium%20Package" target="_blank">
+                <button>Choose Plan</button>
+            </a>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    
+    <div class="footer-container">
+
+        <!-- Left Section -->
+        <div class="footer-box">
+            <h2>Royal Affection Events</h2>
+            <p>Gives You Memorable Moments .</p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-box">
+            <h3>Contact</h3>
+            <p>📞 <a href="tel:" style="color:rgb(110, 119, 110); text-decoration:none;">
+   +91 8920585405
+</a></p>
+            <p>📍 India</p>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#">Instagram</a>
+                <a href="#">WhatsApp</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom -->
+    <div class="footer-bottom">
+        <p>© 2026 Royal Affection Events | All Rights Reserved</p>
+    </div>
+
+</footer>
+<script>
+const hamburger = document.getElementById("hamburger");
+const nav = document.getElementById("navLinks");
+
+hamburger.addEventListener("click", ()=>{
+    hamburger.classList.toggle("active");
+    nav.classList.toggle("active");
+});
+</script>
+
+</body>
+</html>
